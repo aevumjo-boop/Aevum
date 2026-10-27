@@ -1,0 +1,34 @@
+/* Compact layouts retain the desktop art direction without competing with content. */
+@media(max-width:899px){
+ html,body{max-width:100%;overflow-x:clip}
+ #main{min-width:0}
+ #main h1,#main h2,#main h3{overflow-wrap:break-word}
+ .scene-hero-copy{transform:none!important}
+ .scene-service{transform:none!important}
+ .scene-screen{transform:none!important;will-change:auto;box-shadow:0 10px 22px #42200e15!important}
+ .scene-preview:after{opacity:.1!important}
+ .scene-process li{transform:none!important}
+ .scene-workstation,[dir=rtl] .scene-workstation{position:relative;inset:auto;width:250px;height:160px;margin:30px auto 0;perspective:850px;z-index:1}
+ .workstation-scale{transform:scale(.52);transform-origin:0 0;margin-left:26px;top:10px}
+ .scene-work-section>div:not(.scene-workstation){padding-top:24px}
+ body:has(.menu-btn[aria-expanded=true]){overflow:hidden}
+ body:has(.menu-btn[aria-expanded=true]) #aevum-page-walker,
+ body:has(.menu-btn[aria-expanded=true]) #aevum-logo-word-drips{visibility:hidden!important}
+ #aevum-page-walker{transition:opacity .18s}
+}
+@media(max-width:639px){
+ .studio-hero .btn-lg{min-height:48px}
+ .logo-paint-drop{width:12px;height:20px;left:-6px;top:-14px}
+ .logo-paint-event[data-landing-clear=false] .logo-paint-puddle,.logo-paint-event[data-landing-clear=false] .logo-paint-splash{display:none}
+ .logo-paint-ink{inset:-9px -9px}
+ .logo-paint-word{font-size:10px}
+ .logo-paint-event[lang=ar] .logo-paint-word{font-size:13px}
+ .logo-paint-wide-spray{display:none}
+}
+@media(max-width:389px){
+ .studio-hero h1 .sub{font-size:clamp(30px,9vw,35px);line-height:1.15}
+ .studio-hero .hero-copy .lede{font-size:14px;line-height:1.8}
+ .scene-workstation,[dir=rtl] .scene-workstation{width:230px;height:145px}
+ .workstation-scale{transform:scale(.47)}
+}
+@media(prefers-reduced-motion:reduce){#aevum-page-walker{transition:none}}

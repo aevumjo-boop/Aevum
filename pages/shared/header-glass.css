@@ -1,0 +1,24 @@
+/* Frost the header on its own surface so the fixed mobile menu stays viewport-bound. */
+.site-header{
+ isolation:isolate;
+ background:transparent!important;
+ -webkit-backdrop-filter:none!important;
+ backdrop-filter:none!important;
+ border-bottom:1px solid rgba(255,224,208,.12)!important;
+ box-shadow:0 4px 24px rgba(10,5,3,.1)!important;
+}
+.site-header:before{
+ content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(125deg,rgba(47,31,25,.68),rgba(22,14,11,.76));
+ -webkit-backdrop-filter:blur(20px) saturate(145%);
+ backdrop-filter:blur(20px) saturate(145%);
+ box-shadow:inset 0 1px 0 rgba(255,239,224,.045);
+}
+.site-header:has(.menu-btn[aria-expanded=true]):before{background:rgba(23,15,12,.95)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ .site-header:before{background:rgba(27,18,14,.96)}
+}
+@media(max-width:899px){
+ .site-header:before{-webkit-backdrop-filter:blur(15px) saturate(135%);backdrop-filter:blur(15px) saturate(135%)}
+}
+@media(prefers-reduced-transparency:reduce){.site-header:before{background:#1b120e;-webkit-backdrop-filter:none;backdrop-filter:none}}

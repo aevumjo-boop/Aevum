@@ -1,0 +1,33 @@
+/* A studio character climbs out of a page window, then walks with scroll. */
+#aevum-page-walker{position:fixed;inset:0;z-index:24;pointer-events:none;overflow:hidden;mask-repeat:no-repeat;mask-size:100% 100%;contain:strict}
+.walker-guide{position:absolute;left:0;top:0;perspective:1000px;pointer-events:none;will-change:transform,width,height;--walker-rise:96px;--portal-opacity:1}
+.walker-scale{position:absolute;left:0;top:0;width:100px;height:180px;transform-origin:0 0;transform-style:preserve-3d}
+.walker-floor-shadow{position:absolute;bottom:-5px;left:-18px;width:136px;height:25px;background:radial-gradient(ellipse,#3c1b1747,transparent 67%);border-radius:50%;filter:blur(4px)}
+.walker-portal{position:absolute;bottom:-2px;left:-25px;width:150px;height:65px;border-radius:12px;border:3px solid #ff8352;background:linear-gradient(140deg,#3b271c,#100c09);box-shadow:0 4px #9c4927,0 8px 18px #4a261c40,inset 0 0 17px #ff703c45;transform:perspective(400px) rotateX(58deg) rotateZ(-4deg);opacity:var(--portal-opacity);z-index:3}
+.walker-portal>div{position:absolute;top:8px;left:9px;right:9px;display:flex;align-items:center;gap:4px;color:#f0b58a;font:9px monospace;border-bottom:1px solid #bc795533;padding-bottom:4px}.walker-portal i{width:4px;height:4px;background:#ff8c57;border-radius:50%}.walker-portal b{margin-left:7px;font-weight:normal}
+.walker-view{position:absolute;left:-30px;right:-30px;top:-100px;bottom:14px;overflow:hidden;perspective:700px}
+.walker-actor{position:absolute;left:30px;bottom:0;width:100px;height:180px;transform-style:preserve-3d;transform:translateY(calc(var(--walker-rise) + var(--walker-bob,0px)))}
+.walker-head{position:absolute;left:10px;top:14px;width:80px;height:62px;border-radius:22px;background:linear-gradient(135deg,#ffb17d,#ff7546 48%,#e84b2c);border:1px solid #ffd2a1;box-shadow:1px 1px #d8542f,2px 2px #d8542f,3px 3px #c84728,4px 4px #c84728,5px 5px #b73e23,7px 8px 10px #331c1730,inset 2px 2px 5px #ffddb460;transform:translateZ(16px) rotateZ(var(--head-tilt,0deg));z-index:5}
+.walker-screen{position:absolute;left:9px;right:9px;top:11px;bottom:11px;border-radius:13px;background:linear-gradient(145deg,#31201a,#120e0c);border:1px solid #5d3726;box-shadow:inset 0 2px 4px #0009,0 1px #ffc29a9e}
+.walker-eye{position:absolute;top:11px;width:7px;height:12px;background:#ffe2ad;border-radius:6px;box-shadow:0 0 7px #ffbd783b}.eye-left{left:13px;transform:rotate(-8deg)}.eye-right{right:13px;transform:rotate(8deg)}
+.walker-mouth{position:absolute;left:24px;bottom:6px;width:12px;height:5px;border-bottom:2px solid #ffad76;border-radius:0 0 10px 10px}
+.walker-ear{position:absolute;top:21px;width:8px;height:22px;background:linear-gradient(90deg,#7c3b22,#df693b);border:1px solid #f5ad75;border-radius:6px;z-index:-1}.ear-left{left:-7px}.ear-right{right:-7px}
+.walker-head>span{position:absolute;left:25px;top:4px;width:24px;height:2px;border-radius:5px;background:#ffe3b687}
+.walker-antenna{position:absolute;left:48px;top:2px;width:4px;height:15px;background:#e69761;border-radius:4px;box-shadow:2px 1px #803c25;z-index:1}.walker-antenna i{position:absolute;left:-4px;top:-4px;width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,#ffdf9b,#ff7543);box-shadow:0 0 9px #ff8c4c33}
+.walker-neck{position:absolute;left:40px;top:74px;width:20px;height:13px;border-radius:5px;background:linear-gradient(90deg,#46271b,#aa633d,#42251a);z-index:1}
+.walker-torso{position:absolute;left:23px;top:82px;width:54px;height:47px;border-radius:13px 13px 16px 16px;background:linear-gradient(140deg,#fff4dd,#e4c6a2);border:1px solid #fff5e1;box-shadow:1px 1px #c3966a,2px 2px #c3966a,3px 3px #b17d55,5px 5px 8px #4a261c25;z-index:3;transform:translateZ(7px)}
+.walker-chest{position:absolute;left:7px;right:7px;top:3px;height:36px;display:grid;place-items:center;background:transparent;box-shadow:none}.walker-chest img{display:block;width:36px;height:36px;object-fit:contain;pointer-events:none;user-select:none}
+.walker-torso>i{position:absolute;bottom:7px;left:20px;width:4px;height:3px;background:#c59467;border-radius:1px}.walker-torso>i+i{left:28px;background:#f1854b}
+.walker-arm{position:absolute;top:88px;width:13px;height:35px;border-radius:8px;background:linear-gradient(90deg,#ffad70,#f16f3c,#b64b2a);border:1px solid #ffba7a;box-shadow:2px 2px #9c4529;transform-origin:50% 4px;z-index:2}
+.arm-left{left:8px;transform:rotateX(var(--left-arm,0deg)) rotateZ(12deg)}.arm-right{right:8px;transform:rotateX(var(--right-arm,0deg)) rotateZ(calc(-12deg + var(--right-arm,0deg)))}
+.walker-elbow{position:absolute;bottom:8px;left:3px;right:3px;height:4px;background:#a14b2b;border-radius:5px}
+.walker-hand{position:absolute;left:-2px;bottom:-9px;width:16px;height:14px;border-radius:6px;background:linear-gradient(135deg,#fff1d5,#d9b48e);border:1px solid #ffe2bd;box-shadow:2px 2px #aa7a51}
+.walker-leg{position:absolute;top:128px;width:16px;height:35px;border-radius:7px;background:linear-gradient(90deg,#9e5232,#e08b52,#af5933);border:1px solid #f6ba79;transform-origin:50% 2px;box-shadow:2px 2px #7d3b25;z-index:1}
+.leg-left{left:28px;transform:translateY(var(--left-foot,0px)) rotateX(var(--left-stride,0deg))}.leg-right{right:28px;transform:translateY(var(--right-foot,0px)) rotateX(var(--right-stride,0deg))}
+.walker-leg>i{position:absolute;top:14px;left:1px;right:1px;height:5px;border-radius:5px;background:#723c27}
+.walker-foot{position:absolute;bottom:-8px;left:-4px;width:26px;height:14px;border-radius:7px 9px 5px 5px;background:linear-gradient(150deg,#fff1d6,#d9b28a);border:1px solid #fce3bc;box-shadow:0 3px #a86b43,2px 4px 5px #3a201a25;transform:translateZ(8px)}
+@media(prefers-reduced-motion:reduce){#aevum-page-walker{display:none!important}}
+
+/* Alternating footfalls: one planted foot, one lifted forward swing. */
+.leg-left{transform:translateY(var(--left-foot,0px)) translateZ(var(--left-travel,0px)) rotateX(var(--left-stride,0deg))}
+.leg-right{transform:translateY(var(--right-foot,0px)) translateZ(var(--right-travel,0px)) rotateX(var(--right-stride,0deg))}

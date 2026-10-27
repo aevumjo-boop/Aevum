@@ -1,0 +1,71 @@
+html.aevum-intro-active{overflow:hidden}
+.aevum-intro-active #aevum-page-walker,.aevum-intro-active #aevum-logo-word-drips{visibility:hidden!important}
+#aevum-studio-intro{position:fixed;inset:0;z-index:9999;background:#170f0c;color:#fff5e9;overflow:hidden;isolation:isolate;display:grid;place-items:center;outline:none}
+#aevum-studio-intro:before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 53%,#FB563A12,transparent 65%)}
+.intro-star{position:absolute;left:50%;top:48%;width:min(76vw,78vh,740px);aspect-ratio:1;translate:-50% -50%;perspective:1200px;pointer-events:none;opacity:.17;z-index:0}
+.intro-star-world{position:absolute;inset:0;transform:rotateX(12deg) rotateY(-18deg);transform-style:preserve-3d}
+.intro-star-spin{position:absolute;inset:0;transform-style:preserve-3d;animation:intro-star-turn 4.8s linear infinite}
+.intro-star-face{position:absolute;inset:0;transform-style:preserve-3d}
+.intro-star-face svg{display:block;width:100%;height:100%;overflow:visible}
+.intro-star-shadow{display:none}
+.intro-stage{position:absolute;left:50%;top:51%;width:100px;height:180px;transform:translate(-50%,-50%) scale(var(--intro-scale,3));transform-origin:50% 50%;z-index:3;isolation:isolate;--walker-rise:0px;--walker-bob:0px}
+.intro-stage .walker-actor{left:0;top:0;bottom:auto;transform:none;perspective:none;transform-style:flat}
+#aevum-studio-intro[data-ready=true] .intro-stage{animation:intro-enter 1.45s cubic-bezier(.25,.1,.3,1) both}
+.intro-stage .walker-head{animation:intro-nod 1.8s 1.45s ease-in-out both}
+.intro-stage .arm-right{z-index:6;animation:intro-wave 1.8s 1.45s ease-in-out both}
+.intro-stage .arm-left{animation:intro-walk-arm .24s 6 alternate ease-in-out;transform:rotateZ(12deg)}
+.intro-stage .leg-left{animation:intro-walk-left .24s 6 alternate ease-in-out;transform:rotateX(0)}
+.intro-stage .leg-right{animation:intro-walk-right .24s 6 alternate ease-in-out;transform:rotateX(0)}
+.intro-stage .walker-eye{animation:intro-blink 2.4s ease both}
+.intro-greeting{position:absolute;left:calc(50% + min(24vw,190px));top:25%;font:800 clamp(32px,6vw,68px)/1.1 Manrope,'IBM Plex Sans Arabic',sans-serif;letter-spacing:-.04em;color:#FB563A;opacity:0;white-space:nowrap;z-index:5}
+#aevum-studio-intro[data-ready=true] .intro-greeting{animation:intro-hello 1.8s 1.6s ease both}
+.intro-skip{position:absolute;top:max(22px,env(safe-area-inset-top));right:22px;min-height:44px;padding:10px 16px;border:1px solid #e8c5ac35;border-radius:30px;background:#ffffff08;color:#ebd4c1;font:600 12px/1.2 Manrope,'IBM Plex Sans Arabic',sans-serif;cursor:pointer;z-index:5}
+.intro-skip:focus-visible{outline:2px solid #FB563A;outline-offset:4px}
+@keyframes intro-enter{from{transform:translate(calc(-50% - 75vw),-50%) scale(var(--intro-scale))}to{transform:translate(-50%,-50%) scale(var(--intro-scale))}}
+@keyframes intro-walk-left{from{transform:translateY(-4px) rotateZ(12deg)}to{transform:translateY(0) rotateZ(-10deg)}}
+@keyframes intro-walk-right{from{transform:translateY(0) rotateZ(-10deg)}to{transform:translateY(-4px) rotateZ(12deg)}}
+@keyframes intro-walk-arm{from{transform:rotateZ(-12deg)}to{transform:rotateZ(22deg)}}
+@keyframes intro-wave{0%{transform:rotateZ(-12deg)}18%{transform:rotateZ(-137deg)}30%{transform:rotateZ(-160deg)}43%{transform:rotateZ(-128deg)}56%{transform:rotateZ(-157deg)}69%{transform:rotateZ(-130deg)}83%{transform:rotateZ(-139deg)}100%{transform:rotateZ(-12deg)}}
+@keyframes intro-nod{0%,100%{transform:translateZ(16px) rotate(-2deg)}35%,65%{transform:translateZ(16px) rotate(5deg)}}
+@keyframes intro-blink{0%,43%,51%,100%{height:12px}47%{height:3px}}
+@keyframes intro-hello{0%{opacity:0;transform:translateY(10px) rotate(-8deg)}18%,82%{opacity:1;transform:translateY(0) rotate(-8deg)}100%{opacity:0;transform:translateY(-8px) rotate(-8deg)}}
+@keyframes intro-star-turn{from{transform:rotateZ(-16deg)}to{transform:rotateZ(344deg)}}
+@media(max-width:639px){.intro-star{width:min(110vw,70vh);top:45%}.intro-stage{top:51%}.intro-greeting{left:auto;right:9%;top:17%;font-size:42px}.intro-loading{bottom:max(30px,env(safe-area-inset-bottom));font-size:11px}.intro-skip{right:16px;top:16px}}
+@media(prefers-reduced-motion:reduce){#aevum-studio-intro{display:none!important}html.aevum-intro-active{overflow:auto}}
+#aevum-studio-intro[data-leaving=true] .leg-left{animation:intro-walk-left .24s 6 alternate ease-in-out}
+#aevum-studio-intro[data-leaving=true] .leg-right{animation:intro-walk-right .24s 6 alternate ease-in-out}
+#aevum-studio-intro[data-leaving=true] .arm-left{animation:intro-walk-arm .24s 6 alternate ease-in-out}
+#aevum-studio-intro[data-leaving=true] .arm-right{animation:intro-walk-arm .24s 6 alternate-reverse ease-in-out}
+#aevum-studio-intro[data-leaving=true] .intro-greeting{animation:none;opacity:0}
+
+
+
+/* Separate profile artwork keeps the head, body and limbs properly proportioned. */
+@property --intro-profile{syntax:'<number>';inherits:true;initial-value:1}
+.intro-facing{position:absolute;inset:0;--intro-profile:1;animation:intro-face-visitor 1.5s ease both;transition:--intro-profile .2s ease}
+@keyframes intro-face-visitor{0%,76%{--intro-profile:1}100%{--intro-profile:0}}
+#aevum-studio-intro[data-leaving=true] .intro-facing{animation:none;--intro-profile:1}
+.intro-facing>.walker-actor{opacity:calc(1 - var(--intro-profile))}
+.intro-side-robot{position:absolute;inset:0;width:100px;height:180px;overflow:visible;opacity:var(--intro-profile);filter:drop-shadow(2px 3px 1px #8A482B22)}
+.intro-side-robot .side-near-leg,.intro-side-robot .side-far-leg,.intro-side-robot .side-near-arm,.intro-side-robot .side-far-arm{transform-box:fill-box;transform-origin:50% 5%}
+.intro-side-robot .side-near-leg{animation:profile-step .24s 6 alternate ease-in-out}
+.intro-side-robot .side-far-leg{animation:profile-step .24s 6 alternate-reverse ease-in-out}
+.intro-side-robot .side-near-arm{animation:profile-arm .24s 6 alternate-reverse ease-in-out}
+.intro-side-robot .side-far-arm{animation:profile-arm .24s 6 alternate ease-in-out}
+#aevum-studio-intro[data-leaving=true] .side-near-leg{animation:profile-exit-step .24s 6 alternate ease-in-out}
+#aevum-studio-intro[data-leaving=true] .side-far-leg{animation:profile-exit-step .24s 6 alternate-reverse ease-in-out}
+#aevum-studio-intro[data-leaving=true] .side-near-arm{animation:profile-exit-arm .24s 6 alternate-reverse ease-in-out}
+#aevum-studio-intro[data-leaving=true] .side-far-arm{animation:profile-exit-arm .24s 6 alternate ease-in-out}
+@keyframes profile-step{from{transform:translate(-3px,-2px) rotate(24deg)}to{transform:translate(3px,0) rotate(-24deg)}}
+@keyframes profile-exit-step{from{transform:translate(-3px,-2px) rotate(24deg)}to{transform:translate(3px,0) rotate(-24deg)}}
+@keyframes profile-arm{from{transform:rotate(-20deg)}to{transform:rotate(20deg)}}
+@keyframes profile-exit-arm{from{transform:rotate(-20deg)}to{transform:rotate(20deg)}}
+.intro-wordmark{width:120px;height:30px;object-fit:contain;display:block}
+
+/* Silent welcome appears only after the robot reaches the center. */
+.intro-greeting{left:50%;right:auto;top:12%;display:flex;align-items:center;justify-content:center;gap:12px;max-width:calc(100% - 32px);font-size:clamp(22px,3vw,36px);font-weight:700;letter-spacing:-.02em;direction:ltr;color:#fff1e3;transform:translateX(-50%)}
+.intro-greeting .intro-wordmark{width:168px;height:42px;object-fit:contain;flex:none}
+#aevum-studio-intro[data-ready=true] .intro-greeting{animation:intro-welcome 1.8s 1.6s ease both}
+@keyframes intro-welcome{0%{opacity:0;transform:translate(-50%,8px)}18%,88%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-4px)}}
+.intro-stage .walker-mouth{animation:none!important}
+@media(max-width:639px){.intro-greeting{left:50%;right:auto;top:13%;font-size:23px;gap:8px}.intro-greeting .intro-wordmark{width:124px;height:31px}}

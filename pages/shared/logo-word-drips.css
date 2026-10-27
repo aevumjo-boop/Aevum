@@ -1,0 +1,20 @@
+/* A drop of brand-orange paint lands, spreads, and reveals a word in its wet surface. */
+#aevum-logo-word-drips{position:fixed;inset:0;z-index:65;pointer-events:none;overflow:hidden;contain:strict;--a-orange:#FB563A;mask-repeat:no-repeat;mask-size:100% 100%}
+.logo-paint-event{position:absolute;width:0;height:0;pointer-events:none}
+.logo-paint-drop{position:absolute;left:-9px;top:-20px;width:18px;height:29px;filter:drop-shadow(0 2px 3px #29100030);animation:paint-fall .9s cubic-bezier(.42,.03,.76,.48) both;transform-origin:50% 80%}
+.logo-paint-drop svg{display:block;width:100%;height:100%;overflow:visible}
+.logo-paint-puddle{position:absolute;left:var(--dx);top:var(--fall);width:var(--puddle-width);height:48px;margin-left:calc(var(--puddle-width) / -2);margin-top:-20px;animation:paint-land 3s linear both;transform-origin:50% 70%}
+.logo-paint-ink{position:absolute;inset:-14px -18px;display:block;filter:drop-shadow(0 4px 3px #170c0824)}
+.logo-paint-ink svg{display:block;width:100%;height:100%;overflow:visible}
+.logo-paint-word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#24130c;font:800 13px/1.2 Manrope,sans-serif;letter-spacing:.01em;white-space:nowrap;animation:paint-reveal 3s ease both}
+.logo-paint-event[lang=ar] .logo-paint-word{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:16px;letter-spacing:0;direction:rtl}
+.logo-paint-splash{position:absolute;left:var(--dx);top:var(--fall);width:5px;height:6px;background:var(--a-orange);border-radius:50%;animation:paint-splash 3s linear both}
+@keyframes paint-fall{0%{opacity:0;transform:scale(.4,.3)}18%{opacity:1;transform:translate(0,1px) scale(.85,1.2)}40%{transform:translate(calc(var(--dx) * .08),8px) scale(.7,1.65)}90%{opacity:1;transform:translate(calc(var(--dx) * .85),calc(var(--fall) * .8)) scale(.8,1.45)}99%{opacity:1;transform:translate(var(--dx),var(--fall)) scale(1.4,.45)}100%{opacity:0;transform:translate(var(--dx),var(--fall)) scale(2,0)}}
+@keyframes paint-land{0%,30%{opacity:0;transform:scale(.07,.08)}32%{opacity:1;transform:scale(.35,.24)}36%{opacity:1;transform:scale(1.11,.83)}41%{transform:scale(.97,1.04)}46%,83%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.035,.98)}}
+@keyframes paint-reveal{0%,31%{opacity:0;transform:translateY(4px);filter:blur(3px)}37%,84%{opacity:1;transform:translateY(0);filter:blur(0)}100%{opacity:0;transform:translateY(0)}}
+@keyframes paint-splash{0%,30%{opacity:0;transform:translate(0,0) scale(0)}32%{opacity:1;transform:translate(0,-3px) scale(.8)}37%{opacity:1;transform:translate(var(--sx),var(--sy)) scale(1)}43%{opacity:.7;transform:translate(var(--ex),var(--ey)) scale(.7,.35)}51%,100%{opacity:0;transform:translate(var(--ex),var(--ey)) scale(.2)}}
+@media(max-width:639px){.logo-paint-word{font-size:11px}.logo-paint-event[lang=ar] .logo-paint-word{font-size:14px}.logo-paint-puddle{height:42px;margin-top:-18px}}
+@media(prefers-reduced-motion:reduce){#aevum-logo-word-drips{display:none!important}}
+
+.logo-paint-wide-spray{position:absolute;background:#FB563A;pointer-events:none;animation:paint-wide-spray 3s linear both;will-change:transform,opacity}
+@keyframes paint-wide-spray{0%,31%{opacity:0;transform:translate(0,0) scale(.3)}33%{opacity:.85;transform:translate(0,-8px) scale(.6,1.3)}44%{opacity:.85;transform:translate(var(--mx),var(--my)) rotate(var(--tilt)) scale(.75,1.3)}57%{opacity:.8;transform:translate(var(--wx),var(--wy)) rotate(var(--tilt)) scale(1.5,.65)}64%,82%{opacity:.7;transform:translate(var(--wx),var(--wy)) rotate(var(--tilt)) scale(1.15,.9)}100%{opacity:0;transform:translate(var(--wx),var(--wy)) rotate(var(--tilt)) scale(1.2,.9)}}
