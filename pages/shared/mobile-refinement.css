@@ -1,8 +1,55 @@
+/* Arabic needs connected letters, no Latin tracking, and room between lines. */
+[dir="rtl"]{
+  --font:Tajawal,Manrope,system-ui,sans-serif;
+  --display:Tajawal,system-ui,sans-serif;
+}
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] .display,
+[dir="rtl"] .font-display,
+[dir="rtl"] .service-row strong,
+[dir="rtl"] .menu-panel>a,
+[dir="rtl"] .marquee-track span{
+  letter-spacing:0;
+  line-height:1.28;
+}
+[dir="rtl"] .section h2,
+[dir="rtl"] .surface-light h2,
+[dir="rtl"] .surface-dark h2,
+[dir="rtl"] .cta h2,
+[dir="rtl"] .hero h1 .sub{
+  line-height:1.25;
+}
+[dir="rtl"] .eyebrow,
+[dir="rtl"] .meta,
+[dir="rtl"] .help strong,
+[dir="rtl"] .tiny.up{
+  letter-spacing:0;
+  text-transform:none;
+}
+[dir="rtl"] .lede,
+[dir="rtl"] .service-row em,
+[dir="rtl"] .how-grid p{
+  line-height:1.85;
+}
+[dir="rtl"] .sticky-title h2,
+[dir="rtl"] .cta h2{
+  max-width:none;
+}
+[dir="rtl"] #main h1,
+[dir="rtl"] #main h2,
+[dir="rtl"] #main h3{
+  overflow-wrap:normal;
+  word-break:normal;
+}
+
 /* Compact layouts retain the desktop art direction without competing with content. */
 @media(max-width:899px){
  html,body{max-width:100%;overflow-x:clip}
  #main{min-width:0}
  #main h1,#main h2,#main h3{overflow-wrap:break-word}
+ [dir="rtl"] #main h1,[dir="rtl"] #main h2,[dir="rtl"] #main h3{overflow-wrap:normal;word-break:normal}
  .scene-hero-copy{transform:none!important}
  .scene-service{transform:none!important}
  .scene-screen{transform:none!important;will-change:auto;box-shadow:0 10px 22px #42200e15!important}
@@ -11,14 +58,69 @@
  .scene-workstation,[dir=rtl] .scene-workstation{position:relative;inset:auto;width:250px;height:160px;margin:30px auto 0;perspective:850px;z-index:1}
  .workstation-scale{transform:scale(.52);transform-origin:0 0;margin-left:26px;top:10px}
  .scene-work-section>div:not(.scene-workstation){padding-top:24px}
- body:has(.menu-btn[aria-expanded=true]){overflow:hidden}
+ .site-header{position:sticky;top:0}
+ .site-header:has(.menu-btn[aria-expanded=true]){z-index:40}
+ #mobile-menu.is-open{
+  position:fixed;
+  top:5rem;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:39;
+  display:grid!important;
+  align-content:start;
+  width:100%;
+  max-width:none;
+  height:auto;
+  margin:0;
+  background:#170f0c!important;
+  opacity:1!important;
+  animation:none!important;
+  isolation:isolate;
+  overscroll-behavior:contain;
+  overflow:auto;
+  padding-bottom:max(28px,env(safe-area-inset-bottom));
+ }
+ #mobile-menu.is-open>a{
+  font-size:clamp(26px,7.7vw,36px)!important;
+  line-height:1.35!important;
+  padding-block:18px!important;
+  min-height:64px;
+  display:flex;
+  align-items:center;
+ }
+ #mobile-menu.is-open>.menu-tools{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:auto;
+  padding-top:12px;
+ }
  body:has(.menu-btn[aria-expanded=true]) #aevum-page-walker,
  body:has(.menu-btn[aria-expanded=true]) #aevum-logo-word-drips{visibility:hidden!important}
  #aevum-page-walker{transition:opacity .18s}
 }
 @media(max-width:639px){
- .studio-hero .btn-lg{min-height:48px}
+ [dir="rtl"] .section h2,
+ [dir="rtl"] .surface-light h2,
+ [dir="rtl"] .surface-dark h2{
+  font-size:clamp(1.9rem,8vw,2.45rem);
+  line-height:1.32;
+ }
+ [dir="rtl"] .service-row strong{line-height:1.32}
+ .wrap{padding-inline:2.5rem}
+ .studio-hero .hero-inner,.hero-inner{padding-block:2.75rem 3.5rem}
+ .studio-hero .btn-lg,.studio-hero .brand-button{min-height:48px}
+ #main>section:not(.studio-hero):not(.hero):not(.cta):not(.surface-light){padding-block:64px}
+ .scene-work-section>div:not(.scene-workstation){padding-bottom:64px}
+ .page-hero{padding-block:2.5rem 1.5rem}
+ .page-hero h1{font-size:clamp(2.25rem,11vw,3.25rem);line-height:1.12}
+ .cta h2{font-size:clamp(2.4rem,12vw,3.5rem);max-width:none}
+ .footer-grid{gap:2rem}
+ .legal{flex-wrap:wrap;gap:0.75rem}
  .logo-paint-drop{width:12px;height:20px;left:-6px;top:-14px}
+ .logo-paint-puddle{height:42px;margin-top:-18px}
  .logo-paint-event[data-landing-clear=false] .logo-paint-puddle,.logo-paint-event[data-landing-clear=false] .logo-paint-splash{display:none}
  .logo-paint-ink{inset:-9px -9px}
  .logo-paint-word{font-size:10px}

@@ -8,8 +8,8 @@
   --line: oklch(100% 0 0 / 14%);
   --line-strong: oklch(100% 0 0 / 22%);
   --max: 80rem;
-  --font: Manrope, "IBM Plex Sans Arabic", system-ui, sans-serif;
-  --display: "Bricolage Grotesque", Alexandria, system-ui, sans-serif;
+  --font: Manrope, Tajawal, system-ui, sans-serif;
+  --display: "Bricolage Grotesque", Tajawal, system-ui, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --shadow-glow: 0 18px 40px -14px color-mix(in oklab, var(--primary) 60%, transparent);
 }
@@ -40,7 +40,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   padding: 0.5rem 1rem; border-radius: 999px;
 }
 .skip:focus { transform: none; }
-.wrap { width: min(var(--max), 100%); margin-inline: auto; padding-inline: 1.25rem; }
+.wrap { width: min(var(--max), 100%); margin-inline: auto; padding-inline: 2.5rem; }
 .site-header {
   position: sticky; top: 0; z-index: 30;
   background: transparent;
@@ -228,4 +228,19 @@ ul { margin: 0; padding: 0; list-style: none; }
   .asterisk { animation: none; }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
+}
+
+@media (max-width: 639px) {
+  .page-hero { padding: 2.5rem 0 1.5rem; }
+  .page-hero h1 { font-size: clamp(2.25rem, 11vw, 3.25rem); line-height: 1.12; max-width: none; }
+  .jumps-inner { gap: 0.35rem 1rem; padding-block: 1rem; }
+  .jumps a { min-height: 44px; }
+  .service { padding: 4rem 2.5rem; gap: 1.75rem; }
+  .num { font-size: clamp(3.2rem, 18vw, 4.5rem); }
+  .service h2 { font-size: clamp(1.9rem, 8vw, 2.45rem); line-height: 1.2; }
+  .help { margin: 1.5rem 0; }
+  .cols { gap: 1.5rem; }
+  .cta { padding: 4rem 0 4.5rem; }
+  .actions { display: grid; width: 100%; }
+  .actions .btn { width: 100%; justify-content: center; }
 }

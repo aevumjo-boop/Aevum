@@ -17,9 +17,9 @@ html.aevum-intro-active{overflow:hidden}
 .intro-stage .leg-left{animation:intro-walk-left .24s 6 alternate ease-in-out;transform:rotateX(0)}
 .intro-stage .leg-right{animation:intro-walk-right .24s 6 alternate ease-in-out;transform:rotateX(0)}
 .intro-stage .walker-eye{animation:intro-blink 2.4s ease both}
-.intro-greeting{position:absolute;left:calc(50% + min(24vw,190px));top:25%;font:800 clamp(32px,6vw,68px)/1.1 Manrope,'IBM Plex Sans Arabic',sans-serif;letter-spacing:-.04em;color:#FB563A;opacity:0;white-space:nowrap;z-index:5}
+.intro-greeting{position:absolute;left:calc(50% + min(24vw,190px));top:25%;font:800 clamp(32px,6vw,68px)/1.1 Manrope,Tajawal,sans-serif;letter-spacing:-.04em;color:#FB563A;opacity:0;white-space:nowrap;z-index:5}
 #aevum-studio-intro[data-ready=true] .intro-greeting{animation:intro-hello 1.8s 1.6s ease both}
-.intro-skip{position:absolute;top:max(22px,env(safe-area-inset-top));right:22px;min-height:44px;padding:10px 16px;border:1px solid #e8c5ac35;border-radius:30px;background:#ffffff08;color:#ebd4c1;font:600 12px/1.2 Manrope,'IBM Plex Sans Arabic',sans-serif;cursor:pointer;z-index:5}
+.intro-skip{position:absolute;top:max(22px,env(safe-area-inset-top));right:22px;min-height:44px;padding:10px 16px;border:1px solid #e8c5ac35;border-radius:30px;background:#ffffff08;color:#ebd4c1;font:600 12px/1.2 Manrope,Tajawal,sans-serif;cursor:pointer;z-index:5}
 .intro-skip:focus-visible{outline:2px solid #FB563A;outline-offset:4px}
 @keyframes intro-enter{from{transform:translate(calc(-50% - 75vw),-50%) scale(var(--intro-scale))}to{transform:translate(-50%,-50%) scale(var(--intro-scale))}}
 @keyframes intro-walk-left{from{transform:translateY(-4px) rotateZ(12deg)}to{transform:translateY(0) rotateZ(-10deg)}}

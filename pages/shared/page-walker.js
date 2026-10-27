@@ -66,7 +66,7 @@ function create(hero,sections){
    {x:.79,y:.70,size:116,rx:.02,ry:-.16,rz:0}
   ];
   anchors=poses.map((p,i)=>({...p,x:(rtl?1-p.x:p.x)*width,y:p.y*height,size:mobile?Math.min(32,p.size*.3):p.size*.82,s:i===0?0:Math.max(1,r[i].top-height*.32),stage:i}));
-  protectedRects=[...document.querySelectorAll('#main h1,#main h2,#main h3,#main p,#main .brand-button,#main .btn,#main .service-row,#main a.project-card,#main .animate-marquee,#main .marquee-track')].map(docRect);
+  protectedRects=[...document.querySelectorAll('#main h1,#main h2,#main h3,#main p,#main .brand-button,#main .btn,#main .actions,#main .pulse,#main .service-row,#main a.project-card,#main .animate-marquee,#main .marquee-track')].map(e=>{const b=docRect(e);const pad=mobile?18:0;return{...b,left:b.left-pad,right:b.right+pad,top:b.top-pad,bottom:b.bottom+pad};});
   const sculpture=document.querySelector('.scene-workstation');if(sculpture){const rr=docRect(sculpture);protectedRects.push({...rr,left:rr.left-85,right:rr.right+100,top:rr.top-60,bottom:rr.bottom+40});}
   dirty=true;
  }
@@ -76,8 +76,15 @@ function create(hero,sections){
   for(const k of ['x','y','size','rx','ry','rz'])p[k]=mix(a[k],b[k],t);
   p.x+=Math.sin(u*Math.PI)*(mobile?8:35)*(i%2?1:-1);
   p.y+=Math.sin(u*Math.PI*2)*(mobile?9:28);p.stage=t<.5?a.stage:b.stage;
-  // Start directly beside the measured first A, rather than at a viewport guess.
-  if(letterOrigin&&s<340){
+  // On compact screens keep the companion on the sculpture side, never on the CTAs.
+  if(mobile&&s<420){
+   const rtl=document.documentElement.dir==='rtl';
+   p.x=rtl?width*.16:width*.84;
+   p.y=Math.min(height*.34,168);
+   p.size=20;
+   p.stage=0;
+   p.startAnchor=true;
+  }else if(letterOrigin&&s<340){
    const exit=smooth((s-220)/120),side=smooth((s-95)/125);
    const x=mix(letterOrigin.x,width*(document.documentElement.dir==='rtl'?.78:.22),side);
    const y=mix(letterOrigin.worldY-s,Math.min(height*.83,docRect(hero).bottom-s+76),smooth(s/145));
@@ -116,8 +123,8 @@ function create(hero,sections){
    }
    if(best&&best.size>=24)break;
   }
-  // A compact edge perch remains visible even in exceptionally dense viewports.
-  return best||{...p,x:10,y:clamp(wanted.y,top+16,bottom-16),size:12};
+  const rtl=document.documentElement.dir==='rtl';
+  return best||{...p,x:rtl?22:width-22,y:Math.min(height*.34,168),size:18};
  }
  function safePose(p,rects){
   if(mobile)return mobileSafePose(p,rects);
